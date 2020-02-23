@@ -28,6 +28,7 @@ class Plot extends React.Component {
       let minutes = `0${date.getMinutes()}`
       data_labels.push(`${date.getDate()}.${date.getMonth()} ${hours.substr(-2)}:${minutes.substr(-2)}`)
       temperature.push(Math.round(item.main.temp))
+      return false
     })
 
     let temperature_dataset = {
