@@ -1,0 +1,48 @@
+.forecast-carousel
+{
+  margin-bottom: 3.6em;
+  .carousel-indicators{
+    position: absolute;
+    margin-bottom: -40px;
+    li{
+      background-color: #74ebd5;
+    }
+    li.active{
+      background-color:   #6FD1BF;
+    }
+  }
+
+}
+
+.carousel-control-prev, .carousel-control-next{
+  top: inherit;
+  bottom: 0 !important;
+}
+.carousel-control-prev-icon,
+.carousel-control-next-icon {
+  height: 10px;
+  width: 10px;
+  outline: black;
+  background-size: 100%, 100%;
+  background-image: none;
+}
+
+.carousel-control-next-icon:after
+{
+  content: '>';
+  font-size: 3em;
+  color: #6FD1BF
+}
+
+.carousel-control-prev-icon:after {
+  content: '<';
+  font-size: 3em;
+  color: #6FD1BF;
+}
+
+.forecast-item
+{
+  height: 14em;
+  min-width: 140px;
+}
+
