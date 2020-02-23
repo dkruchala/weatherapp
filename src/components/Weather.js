@@ -18,6 +18,7 @@ class Weather extends React.Component {
       currentHumidity: 0,
       currentPresure: 0,
       currentWind: 0,
+      clouds: 0,
       name: '',
       icon: 'owi owi-04n owi-5x',
       weather_description: '',
@@ -43,6 +44,9 @@ class Weather extends React.Component {
           currentPresure: data.main.pressure,
           currentHumidity: data.main.humidity,
           currentWind: data.wind.speed,
+          dawn: new Date(data.sys.sunrise * 1000).toLocaleTimeString(),
+          dusk: new Date(data.sys.sunset * 1000).toLocaleTimeString(),
+          clouds: data.clouds.all,
           name: data.name,
           weather_description: data.weather[0].description.toUpperCase(),
           icon: `owi owi-${data.weather[0].icon} owi-5x`
@@ -80,31 +84,83 @@ class Weather extends React.Component {
                 </div>
                 <div className="current-weather-bottom">
                   <div className="row no-gutters" style={{ borderTop: '1px solid rgba(0,122,122,0.2)' }}>
-                    <div className="col-6 text-center py-2" style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }}>
-                      <span className="">
-                        <FontAwesomeIcon icon='tachometer-alt' className="mr-2" />
-                        Pressure: <b>{this.state.currentPresure} hPa</b>
-                      </span>
+
+                    <div className="col-6 py-2" style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }} >
+                      <div className="media px-3 d-flex align-items-center">
+                        <div className="mr-3" style={{ width: '2em' }}>
+                          <FontAwesomeIcon icon="tachometer-alt" size="2x" />
+                        </div>
+                        <div className="media-body">
+                          <div className="mt-0 small"><b>PRESSURE:</b></div>
+                          {this.state.currentPresure} hPa
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-6 text-center py-2">
-                      <span className="">
-                        <FontAwesomeIcon icon="tint" className="mr-2" />
-                        Humidity: <b>{this.state.currentHumidity} %</b>
-                      </span>
+
+                    <div className="col-6 py-2  " style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }} >
+                      <div className="media px-3 d-flex align-items-center">
+                        <div className="mr-3" style={{ width: '2em' }}>
+                          <FontAwesomeIcon icon="tint" size="2x" />
+                        </div>
+                        <div className="media-body">
+                          <div className="mt-0 small"><b>HUMIDITY:</b></div>
+                          {this.state.currentHumidity} %
+                        </div>
+                      </div>
                     </div>
+
                   </div>
                   <div className="row no-gutters" style={{ borderTop: '1px solid rgba(0,122,122,0.2)' }}>
-                    <div className="col-6 text-center py-2" style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }} >
-                      <span className="">
-                        <FontAwesomeIcon icon='wind' className="mr-2" />
-                        Wind: <b>{this.state.currentWind} m/s</b>
-                      </span>
+
+                    <div className="col-6 py-2 " style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }} >
+                      <div className="media px-3 d-flex align-items-center">
+                        <div className="mr-3" style={{ width: '2em' }}>
+                          <FontAwesomeIcon icon="wind" size="2x" />
+                        </div>
+
+                        <div className="media-body">
+                          <div className="mt-0 small"><b>WIND:</b></div>
+                          {this.state.currentWind} m/s
+                        </div>
+                      </div>
                     </div>
-                    <div className="col-6 text-center py-2">
-                      <span className="">
-                        <FontAwesomeIcon icon="tint" className="mr-2" />
-                        Humidity: <b>{this.state.currentHumidity} %</b>
-                      </span>
+
+                    <div className="col-6 py-2" style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }} >
+                      <div className="media px-3 d-flex align-items-center">
+                        <div className="mr-3" style={{ width: '2em' }}>
+                          <FontAwesomeIcon icon="cloud" size="2x" />
+                        </div>
+                        <div className="media-body">
+                          <div className="mt-0 small"><b>CLOUDS:</b></div>
+                          {this.state.clouds} %
+                        </div>
+                      </div>
+                    </div>
+
+
+                  </div>
+                  <div className="row no-gutters" style={{ borderTop: '1px solid rgba(0,122,122,0.2)' }}>
+                    <div className="col-6 py-2" style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }} >
+                      <div className="media px-3 d-flex align-items-center">
+                        <div className="mr-3" style={{ width: '2em' }}>
+                          <FontAwesomeIcon icon="sun" size="2x" />
+                        </div>
+                        <div className="media-body">
+                          <div className="mt-0 small"><b>SUNRISE:</b></div>
+                          {this.state.dawn}
+                        </div>
+                      </div>
+                    </div>
+                    <div className="col-6 py-2" >
+                      <div className="media px-3 d-flex align-items-center">
+                        <div className="mr-3" style={{ width: '2em' }}>
+                          <FontAwesomeIcon icon="moon" className="mr-3" size="2x" />
+                        </div>
+                        <div className="media-body">
+                          <div className="mt-0 small"><b>SUNSET:</b></div>
+                          {this.state.dusk}
+                        </div>
+                      </div>
                     </div>
                   </div>
 
@@ -112,7 +168,7 @@ class Weather extends React.Component {
               </div>
             </div>
             <div className="col-sm-12 col-md-12 col-lg-8 mt-4 mt-lg-0">
-              <Forecast />
+              <Forecast area_id={this.props.area_id} />
             </div>
           </div>
         </div>

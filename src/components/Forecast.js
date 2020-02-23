@@ -24,8 +24,7 @@ class Forecast extends React.Component {
     window.removeEventListener('resize', this.updateDimensions)
   }
   getForecast = () => {
-    let weatherURL = `https://api.openweathermap.org/data/2.5/forecast?id=768081&appid=${API_KEY}&units=metric`
-    let temp = []
+    let weatherURL = `https://api.openweathermap.org/data/2.5/forecast?id=${this.props.area_id}&appid=${API_KEY}&units=metric`
     fetch(weatherURL)
       .then(resp => resp.json())
       .then(data => {
