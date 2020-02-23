@@ -17,7 +17,7 @@ function App() {
   return (
     <div className="App">
       <Navbar />
-      <Weather />
+      <Weather area_id={768081} />
     </div>
   );
 }

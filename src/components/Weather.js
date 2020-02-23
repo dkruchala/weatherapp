@@ -20,6 +20,9 @@ class Weather extends React.Component {
       currentWind: 0,
       name: '',
       icon: 'owi owi-04n owi-5x',
+      weather_description: '',
+      dusk: '',
+      dawn: '',
       loading: true
     }
   }
@@ -29,7 +32,7 @@ class Weather extends React.Component {
   }
 
   getWeather = () => {
-    let weatherURL = `https://api.openweathermap.org/data/2.5/weather?id=768081&APPID=${API_KEY}&units=metric`
+    let weatherURL = `https://api.openweathermap.org/data/2.5/weather?id=${this.props.area_id}&APPID=${API_KEY}&units=metric`
 
     fetch(weatherURL)
       .then(resp => resp.json())
@@ -41,6 +44,7 @@ class Weather extends React.Component {
           currentHumidity: data.main.humidity,
           currentWind: data.wind.speed,
           name: data.name,
+          weather_description: data.weather[0].description.toUpperCase(),
           icon: `owi owi-${data.weather[0].icon} owi-5x`
         })
         console.log(data)
@@ -66,6 +70,7 @@ class Weather extends React.Component {
                 <div className="current-weather-main p-2 flex-grow-1 d-flex align-items-center justify-content-center ">
                   <div className="d-flex align-items-center text-white">
                     <div className="text-center">
+                      <div>{this.state.weather_description}</div><br />
                       <i className={this.state.icon}></i>
                       <div className="display-3">
                         <b><b>{this.state.currentTemperature} °C</b></b>
@@ -73,20 +78,36 @@ class Weather extends React.Component {
                     </div>
                   </div>
                 </div>
-                <div className="current-weather-bottom pl-5 mb-4">
-                  <span className="">
-                    <FontAwesomeIcon icon='tachometer-alt' className="mr-2" />
-                    Pressure: <b>{this.state.currentPresure} hPa</b>
-                  </span><br />
-                  <span className="">
-                    <FontAwesomeIcon icon="tint" className="mr-2" />
-                    Humidity: <b>{this.state.currentHumidity} %</b>
-                  </span><br />
-                  <span className="">
-                    <FontAwesomeIcon icon='wind' className="mr-2" />
+                <div className="current-weather-bottom">
+                  <div className="row no-gutters" style={{ borderTop: '1px solid rgba(0,122,122,0.2)' }}>
+                    <div className="col-6 text-center py-2" style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }}>
+                      <span className="">
+                        <FontAwesomeIcon icon='tachometer-alt' className="mr-2" />
+                        Pressure: <b>{this.state.currentPresure} hPa</b>
+                      </span>
+                    </div>
+                    <div className="col-6 text-center py-2">
+                      <span className="">
+                        <FontAwesomeIcon icon="tint" className="mr-2" />
+                        Humidity: <b>{this.state.currentHumidity} %</b>
+                      </span>
+                    </div>
+                  </div>
+                  <div className="row no-gutters" style={{ borderTop: '1px solid rgba(0,122,122,0.2)' }}>
+                    <div className="col-6 text-center py-2" style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }} >
+                      <span className="">
+                        <FontAwesomeIcon icon='wind' className="mr-2" />
+                        Wind: <b>{this.state.currentWind} m/s</b>
+                      </span>
+                    </div>
+                    <div className="col-6 text-center py-2">
+                      <span className="">
+                        <FontAwesomeIcon icon="tint" className="mr-2" />
+                        Humidity: <b>{this.state.currentHumidity} %</b>
+                      </span>
+                    </div>
+                  </div>
 
-                    Wind: <b>{this.state.currentWind} m/s</b>
-                  </span>
                 </div>
               </div>
             </div>

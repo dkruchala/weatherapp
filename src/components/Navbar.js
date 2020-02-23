@@ -20,7 +20,7 @@ class Navbar extends React.Component {
 						<div className="collapse navbar-collapse" id="navbarSupportedContent">
 							<ul className="navbar-nav ml-auto">
 								<li className="nav-item active">
-									<button className="btn rounded-pill btn-secondary">
+									<button className="btn rounded-pill btn-secondary" onClick={() => { window.open('https://github.com/dkruchala/weatherapp') }}>
 										<FontAwesomeIcon icon={['fab', 'github']} className="mr-2" />
 										GITHUB
 									</button>

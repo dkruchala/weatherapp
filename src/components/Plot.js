@@ -39,11 +39,8 @@ class Plot extends React.Component {
           'rgba(111, 209, 191, 1)',
         ],
         data: temperature
-      }
-      ]
+      }]
     }
-
-    console.log(temperature_dataset)
 
     this.setState({
       converted_data: temperature_dataset

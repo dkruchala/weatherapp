@@ -93,7 +93,7 @@ class Forecast extends React.Component {
                 <div className="row d-flex flex-nowrap">
                   {
                     slide.map(item => (
-                      <div className="col">
+                      <div className="col" key={item.dt}>
                         <div className="card bg-gradient border-0 text-white text-center forecast-item d-flex">
                           <div className="mt-2">
                             <div className="small"><b>{this.getDateOrTime('date', item.dt)}</b></div>
