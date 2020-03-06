@@ -26,7 +26,7 @@ class Plot extends React.Component {
       let date = new Date(item.dt * 1000)
       let hours = `0${date.getHours()}`
       let minutes = `0${date.getMinutes()}`
-      data_labels.push(`${date.getDate()}.${date.getMonth()} ${hours.substr(-2)}:${minutes.substr(-2)}`)
+      data_labels.push(`${date.getDate()}.${('0' + (date.getMonth() + 1)).substr(-2)} ${hours.substr(-2)}:${minutes.substr(-2)}`)
       temperature.push(Math.round(item.main.temp))
       return false
     })

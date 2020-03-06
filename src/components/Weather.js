@@ -97,7 +97,7 @@ class Weather extends React.Component {
                       </div>
                     </div>
 
-                    <div className="col-6 py-2  " style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }} >
+                    <div className="col-6 py-2  " >
                       <div className="media px-3 d-flex align-items-center">
                         <div className="mr-3" style={{ width: '2em' }}>
                           <FontAwesomeIcon icon="tint" size="2x" />
@@ -125,7 +125,7 @@ class Weather extends React.Component {
                       </div>
                     </div>
 
-                    <div className="col-6 py-2" style={{ borderRight: '1px solid rgba(0,122,122,0.2)' }} >
+                    <div className="col-6 py-2" >
                       <div className="media px-3 d-flex align-items-center">
                         <div className="mr-3" style={{ width: '2em' }}>
                           <FontAwesomeIcon icon="cloud" size="2x" />
